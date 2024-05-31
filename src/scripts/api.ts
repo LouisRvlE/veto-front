@@ -1,6 +1,6 @@
 import { Collections } from "./types/Collections";
 
-export const apiUrl = "http://192.168.1.79:8080/api/";
+export const apiUrl = "http://localhost:8080/api/";
 
 export const updateRecord = async <T extends keyof Collections>(
     collection: T,
@@ -26,14 +26,14 @@ export const updateRecord = async <T extends keyof Collections>(
         },
         body: JSON.stringify(data),
     });
-    return response.json();
+    return response.text();
 };
 
 export const createRecord = async <T extends keyof Collections>(
     collection: T,
-    data: Exclude<Collections[T], "id">
+    data: Partial<Exclude<Collections[T], "id">>
 ) => {
-    const url: URL = new URL(`${apiUrl}${collection}/create`);
+    const url: URL = new URL(`${apiUrl}${collection}/add`);
 
     for (const key in data) {
         const element = data[key];
@@ -46,17 +46,17 @@ export const createRecord = async <T extends keyof Collections>(
 
     const response = await fetch(url, {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
+        // headers: {
+        //     "Content-Type": "application/json",
+        // },
+        // body: JSON.stringify(data),
     });
-    return response.json();
+    return response.text();
 };
 
 export const deleteRecord = async <T extends keyof Collections>(
     collection: T,
-    id: number
+    id: number | string | undefined
 ) => {
     const url: URL = new URL(`${apiUrl}${collection}/${id}/delete`);
 
@@ -66,5 +66,5 @@ export const deleteRecord = async <T extends keyof Collections>(
             "Content-Type": "application/json",
         },
     });
-    return response.json();
+    return response.text();
 };

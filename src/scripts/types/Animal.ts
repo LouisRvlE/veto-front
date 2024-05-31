@@ -6,4 +6,5 @@ export type Animal = {
     client: number;
     note: string;
     type: string;
+    appointments: number[];
 };

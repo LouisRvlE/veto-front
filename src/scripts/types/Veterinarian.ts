@@ -1,4 +1,5 @@
 export type Veterinarian = {
-    id: 3;
+    id: number;
+    name: string;
     appointments: number[];
 };

@@ -1,6 +1,25 @@
 import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
 import Shell from "../components/layout/Shell";
-import Clients from "./Clients/Clients";
+import Clients from "../router/Clients/pages/Clients";
+import CreateClient from "../router/Clients/pages/Create";
+import { UpdateClient } from "../router/Clients/pages/Update";
+import { Client } from "../router/Clients/pages/Client";
+import Animals from "../router/Animals/pages/Animals";
+import CreateAnimal from "../router/Animals/pages/Create";
+import { UpdateAnimal } from "../router/Animals/pages/Update";
+import { Animal } from "../router/Animals/pages/Animal";
+import Appointments from "../router/Appointments/pages/Appointments";
+import CreateAppointment from "../router/Appointments/pages/Create";
+import { UpdateAppointment } from "../router/Appointments/pages/Update";
+import { Appointment } from "../router/Appointments/pages/Appointment";
+import Veterinarians from "../router/Veterinarians/pages/Veterinarians";
+import CreateVeterinarian from "../router/Veterinarians/pages/Create";
+import { UpdateVeterinarian } from "../router/Veterinarians/pages/Update";
+import { Veterinarian } from "../router/Veterinarians/pages/Veterinarian";
+import Reports from "../router/Reports/pages/Reports";
+import CreateReport from "../router/Reports/pages/Create";
+import { UpdateReport } from "../router/Reports/pages/Update";
+import { Report } from "../router/Reports/pages/Report";
 
 const Router = () => {
     const router = createBrowserRouter([
@@ -10,22 +29,22 @@ const Router = () => {
             children: [
                 {
                     path: "/",
-                    element: <h1>Home</h1>,
+                    element: <h1>Home page</h1>,
                 },
                 {
                     path: "/animals",
                     element: <Outlet />,
                     children: [
-                        { path: "/animals/", element: <h1>Animals</h1> },
+                        { path: "/animals/", element: <Animals /> },
                         {
                             path: "/animals/create",
-                            element: <h1>New Animal</h1>,
+                            element: <CreateAnimal />,
                         },
                         {
-                            path: "/animals/update",
-                            element: <h1>Update Animal</h1>,
+                            path: "/animals/:id/update",
+                            element: <UpdateAnimal />,
                         },
-                        { path: "/animals/:id", element: <h1>Animal</h1> },
+                        { path: "/animals/:id", element: <Animal /> },
                     ],
                 },
                 {
@@ -35,13 +54,13 @@ const Router = () => {
                         { path: "/clients/", element: <Clients /> },
                         {
                             path: "/clients/create",
-                            element: <h1>New Client</h1>,
+                            element: <CreateClient />,
                         },
                         {
-                            path: "/clients/update",
-                            element: <h1>Update Client</h1>,
+                            path: "/clients/:id/update",
+                            element: <UpdateClient />,
                         },
-                        { path: "/clients/:id", element: <h1>Client</h1> },
+                        { path: "/clients/:id", element: <Client /> },
                     ],
                 },
                 {
@@ -50,19 +69,19 @@ const Router = () => {
                     children: [
                         {
                             path: "/appointments/",
-                            element: <h1>Appointments</h1>,
+                            element: <Appointments />,
                         },
                         {
                             path: "/appointments/create",
-                            element: <h1>New Appointment</h1>,
+                            element: <CreateAppointment />,
                         },
                         {
-                            path: "/appointments/update",
-                            element: <h1>Update Appointment</h1>,
+                            path: "/appointments/:id/update",
+                            element: <UpdateAppointment />,
                         },
                         {
                             path: "/appointments/:id",
-                            element: <h1>Appointment</h1>,
+                            element: <Appointment />,
                         },
                     ],
                 },
@@ -72,19 +91,19 @@ const Router = () => {
                     children: [
                         {
                             path: "/veterinarians/",
-                            element: <h1>Veterinarians</h1>,
+                            element: <Veterinarians />,
                         },
                         {
                             path: "/veterinarians/create",
-                            element: <h1>New Veterinarian</h1>,
+                            element: <CreateVeterinarian />,
                         },
                         {
-                            path: "/veterinarians/update",
-                            element: <h1>Update Veterinarian</h1>,
+                            path: "/veterinarians/:id/update",
+                            element: <UpdateVeterinarian />,
                         },
                         {
                             path: "/veterinarians/:id",
-                            element: <h1>Veterinarian</h1>,
+                            element: <Veterinarian />,
                         },
                     ],
                 },
@@ -94,19 +113,19 @@ const Router = () => {
                     children: [
                         {
                             path: "/reports/",
-                            element: <h1>Reports</h1>,
+                            element: <Reports />,
                         },
                         {
                             path: "/reports/create",
-                            element: <h1>New Report</h1>,
+                            element: <CreateReport />,
                         },
                         {
-                            path: "/reports/update",
-                            element: <h1>Update Report</h1>,
+                            path: "/reports/:id/update",
+                            element: <UpdateReport />,
                         },
                         {
                             path: "/reports/:id",
-                            element: <h1>Report</h1>,
+                            element: <Report />,
                         },
                     ],
                 },

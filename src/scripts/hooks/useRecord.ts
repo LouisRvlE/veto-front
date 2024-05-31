@@ -2,7 +2,10 @@ import { useFetch } from "@mantine/hooks";
 import { Collections } from "../types/Collections";
 import { apiUrl } from "../api";
 
-const useRecord = <T extends keyof Collections>(collection: T, id: number) => {
+const useRecord = <T extends keyof Collections>(
+    collection: T,
+    id: number | string | undefined
+) => {
     type Record = Collections[T];
     return useFetch<Record>(`${apiUrl}${collection}/${id}`);
 };
